@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.js"></script>
+    <title>EMMAP</title>
+    <script src="./assets/js/leaflet-routing-machine.js"></script>
+    <style>
+      * {
+          margin: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="destination"></p>
+    <ul id="directions"></ul>
+    <script>
+      function getRandomArbitrary(min, max) {
+          return Math.random() * (max - min) + min;
+      }
+      var direct = function(fromLat, fromLon, toLat, toLon){
+          const router = L.Routing.osrmv1({
+              language: 'en',
+              serviceUrl: 'https://routing.openstreetmap.de/routed-foot/route/v1'
+          });
+          const formatter = new L.Routing.Formatter({ language: 'en', units: 'metric' });
+          const waypoints = [
+              L.Routing.waypoint(L.latLng(fromLat, fromLon)),
+              L.Routing.waypoint(L.latLng(toLat, toLon))
+          ];
+          router.route(waypoints, function (err, routes) {
+              
+              const route = routes[0];
+              const distance = formatter.formatDistance(routes[0].summary.totalDistance);
+              const list = document.getElementById('directions');
+              const destination = document.getElementById('destination');
+              destination.textContent = "Go these coordinates (Latitude, Longitude): "
+                  + toLat + ", " + toLon + ". About " + distance + " away on foot if you follow these instructions.";
+              route.instructions.forEach(function (instr, i) {
+                  const item = document.createElement('li');
+                  item.textContent = formatter.formatInstruction(instr, i) +
+                      (instr.distance ? ' (' + formatter.formatDistance(instr.distance) + ')' : '');
+                  list.appendChild(item);
+              });
+
+          });
+      }
+      direct(52.0818079834121, 4.319349355087131, getRandomArbitrary(52.08, 52.09), getRandomArbitrary(4.310, 4.30));
+    </script>
+  </body>
+</html>
