@@ -18,8 +18,8 @@ function getRandomArbitrary(min, max) {
               const list = document.getElementById('directions');
               const destination = document.getElementById('destination');
               document.getElementById('distance').textContent = distance;
-              destination.textContent = "try to get as close as possible to these coordinates with only these instructions: \n"
-                + "\n" + toLat + ", " + toLon;
+              destination.textContent = "try to get as close as possible (no trespassing please) to these coordinates with only these instructions: "
+               + toLat + ", " + toLon;
               route.instructions.forEach(function (instr, i) {
                   const item = document.createElement('li');
                   item.textContent = formatter.formatInstruction(instr, i) +
