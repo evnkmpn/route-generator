@@ -18,7 +18,7 @@ function getRandomArbitrary(min, max) {
               const list = document.getElementById('directions');
               const destination = document.getElementById('destination');
               document.getElementById('distance').textContent = distance;
-              destination.textContent = "try to get as close as possible to these coordinates with only xthese instructions: \n"
+              destination.textContent = "try to get as close as possible to these coordinates with only these instructions: \n"
                 + "\n" + toLat + ", " + toLon;
               route.instructions.forEach(function (instr, i) {
                   const item = document.createElement('li');
