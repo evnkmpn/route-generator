@@ -2,3 +2,24 @@
     font-family: "Google Sans", Courier, monospace;
 }
 
+div {
+    display: inline-flex;
+    gap: 1rem;
+    border: 1px solid #ccc;
+    padding: 10px;
+
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+#distance {
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+

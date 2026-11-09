@@ -17,8 +17,9 @@ function getRandomArbitrary(min, max) {
               const distance = formatter.formatDistance(routes[0].summary.totalDistance);
               const list = document.getElementById('directions');
               const destination = document.getElementById('destination');
-              destination.textContent = "Go these coordinates: "
-                  + toLat + ", " + toLon + ". About " + distance + " away on foot if you follow these instructions.";
+              document.getElementById('distance').textContent = distance;
+              destination.textContent = "try to get as close as possible to these coordinates with only these instructions: \n"
+                + "\n" + toLat + ", " + toLon;
               route.instructions.forEach(function (instr, i) {
                   const item = document.createElement('li');
                   item.textContent = formatter.formatInstruction(instr, i) +
@@ -28,4 +29,4 @@ function getRandomArbitrary(min, max) {
 
           });
       }
-      direct(52.0818079834121, 4.319349355087131, getRandomArbitrary(52.08, 52.09), getRandomArbitrary(4.310, 4.30));
+      direct(52.0818079834121, 4.319349355087131, getRandomArbitrary(52.073, 52.095), getRandomArbitrary(4.28, 4.35));
