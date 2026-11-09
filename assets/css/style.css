@@ -1,6 +1,6 @@
 * {
     font-family: "Google Sans", Courier, monospace;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 div {
@@ -21,6 +21,12 @@ ul {
     padding: 0;
     margin: 0;
     text-align: right;
+}
+
+@media (max-width: 600px) {
+    * {
+        font-size: 1.5rem;
+    }
 }
 
 
