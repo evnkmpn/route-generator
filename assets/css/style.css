@@ -23,7 +23,7 @@ ul {
     text-align: right;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
     * {
         font-size: 1.5rem;
     }
